@@ -190,13 +190,10 @@ describe('Config', function(){
 				done()
 			})
 		})
-		it('can also use space delimited string', function(done){
-			config.set('src_files', 'integration/browser_tests.bat integration/browser_tests.sh')
+		it('can open a file with a space in the filename', function(done){
+			config.set('src_files', 'space test.js')
 			config.getSrcFiles(function(err, files){
-				expect(files).to.deep.equal([
-					fileEntry('integration/browser_tests.bat'), 
-					fileEntry('integration/browser_tests.sh')
-				])
+				expect(files).to.deep.equal([fileEntry('space test.js')])
 				done()
 			})
 		})
